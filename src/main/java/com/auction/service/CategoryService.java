@@ -1,9 +1,7 @@
 package com.auction.service;
 
-
 import com.auction.model.Category;
 import org.springframework.data.domain.Sort;
-
 import java.util.List;
 
 public interface CategoryService {

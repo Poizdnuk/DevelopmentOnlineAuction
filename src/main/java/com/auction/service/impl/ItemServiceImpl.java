@@ -30,7 +30,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item editBank(Item item) {
+    public Item editItem(Item item) {
         return null;
     }
 
