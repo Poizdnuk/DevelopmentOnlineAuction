@@ -12,13 +12,9 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id", nullable = false)
-    private User seller;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "item_id", nullable = false)
-    private Item item;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bid_id")
+    private Bid bid;
 
     @Temporal(TemporalType.DATE)
     @Column
