@@ -1,7 +1,7 @@
 package com.auction.service.impl;
 
 import com.auction.model.Category;
-import com.auction.repository.DidRepository;
+import com.auction.repository.CategoryRepository;
 import com.auction.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -13,7 +13,7 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
-    private DidRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     @Override
     public Category getOne(Long id) {

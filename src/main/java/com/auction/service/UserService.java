@@ -13,5 +13,9 @@ public interface UserService {
 
     List<User> findAll(Sort var1);
 
-    User saveAndFlush(User category);
+    User saveAndFlush(User user);
+
+    void save(User user);
+
+    User findByUserLogin(String login);
 }
