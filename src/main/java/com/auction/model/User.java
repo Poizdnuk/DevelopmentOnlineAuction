@@ -1,6 +1,7 @@
 package com.auction.model;
 
 import com.sun.istack.internal.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +14,6 @@ public class User {
 	@Column(name = "user_id")
 	private Long id;
 
-	@NotNull
 	@Column(name = "login", length = 20)
 	private String login;
 
@@ -50,7 +50,6 @@ public class User {
 	@Column(name = "money")
 	private long money;
 
-	@NotNull
 	@Column(name = "password")
 	private String password;
 
@@ -60,7 +59,6 @@ public class User {
 			inverseJoinColumns = {@JoinColumn(name = "user_role_id")} )
 	private List<UserRole> userRole;
 
-	@NotNull
 	@Transient
 	private String passwordConfirm;
 

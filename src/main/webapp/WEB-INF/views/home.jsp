@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -40,49 +41,53 @@
         </div>
     </div>
     <div class="tab-pane" id="addItem">
+        <div class="container">
+            <form:form method="POST" modelAttribute="item" class="form-signin" action="/user/home">
+                <h2 class="form-signin-heading">Создание товара</h2>
+                <spring:bind path="name">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:label path="name">Название </form:label>
+                        <form:input type="text" path="name" class="form-control" placeholder="Введите имя"
+                                    autofocus="true"/>
+                        <form:errors path="name" cssClass="ERROR"/>
+                    </div>
+                </spring:bind>
+                <spring:bind path="description">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:label path="name">Описание товара</form:label>
+                        <form:textarea type="text" path="description" class="form-control" placeholder="Описание товара"
+                                       autofocus="true"/>
+                            <%--<form:errors path="description" cssClass="ERROR"></form:errors>--%>
+                    </div>
+                </spring:bind>
+                <spring:bind path="price">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:label path="name">Цена</form:label>
+                        <form:input type="text" path="price" class="form-control" placeholder="Цена"
+                                    autofocus="true"/>
+                            <%--<form:errors path="price" cssClass="ERROR"></form:errors>--%>
+                    </div>
+                </spring:bind>
 
-            <c:url var="itemUrl" value="/login"/>
-            <form action="${itemUrl}" method="post" class="form-horizontal">
-                <div class="input-group input-sm">
-                    <label for="name">Название</label>
-                    <input type="text" class="form-control" id="name" placeholder="Название">
-                </div>
-                <div class="input-group input-sm">
-                    <label for="price">Цена</label>
-                    <input type="text" class="form-control" id="price" placeholder="Цена">
-                </div>
-                <div class="input-group input-sm">
-                    <label for="low_price">Минимальная цена</label>
-                    <input type="text" class="form-control" id="low_price" placeholder="Минимальная цена">
-                </div>
-                <div class="input-group input-sm">
-                    <label for="description">Описание</label>
-                    <input type="text" class="form-control" id="description" placeholder="Описание">
-                </div>
-                <div class="input-group input-sm">
-                    <label for="interval_end">Период торга</label>
-                    <input type="text" class="form-control" id="interval_end" placeholder="Период торга">
-                </div>
-
-                <div class="input-group input-sm">
-                    <label for="interval_end">Категория</label>
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-
-                <div class="input-group input-sm">
-                    <label for="photo">Добавить фото</label>
-                    <input type="file" id="photo">
-                    <p class="help-block">Example block-level help text here!</p>
-                </div>
-
+                <spring:bind path="lowPrice">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:label path="name">Минимальная цена</form:label>
+                        <form:input type="text" path="lowPrice" class="form-control" placeholder="Минимальная цена"
+                                    autofocus="true"/>
+                            <%--<form:errors path="lowPrice" cssClass="ERROR"></form:errors>--%>
+                    </div>
+                </spring:bind>
+                <spring:bind path="intervalEnd">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:label path="intervalEnd">Период ставки</form:label>
+                        <form:input type="text" path="intervalEnd" class="form-control" placeholder="Период ставки"
+                                    autofocus="true"/>
+                            <%--<form:errors path="lowPrice" cssClass="ERROR"></form:errors>--%>
+                    </div>
+                </spring:bind>
                 <button type="submit" class="btn btn-default">Отправить</button>
-            </form>
+            </form:form>
+        </div>
     </div>
     <div class="tab-pane" id="editItem">
 

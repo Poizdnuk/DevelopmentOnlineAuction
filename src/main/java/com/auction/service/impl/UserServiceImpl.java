@@ -13,19 +13,16 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service("userService")
-public class UserServiceImpl implements UserService, UserDetailsService{
-
+public class UserServiceImpl implements UserService, UserDetailsService {
+    private List<UserRole> list = null;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -55,7 +52,7 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Override
     public User findByUserLogin(String login) {
-        return userRepository.findByUserLogin(login);
+        return userRepository.findUserByLogin(login);
     }
 
     @Transactional(readOnly = true)
@@ -78,7 +75,8 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     @Override
     public void save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setUserRole(new ArrayList<>(userRoleRepository.findAll()));
+        user.setUserRole(userRoleRepository.findAll());
         userRepository.save(user);
     }
+
 }
