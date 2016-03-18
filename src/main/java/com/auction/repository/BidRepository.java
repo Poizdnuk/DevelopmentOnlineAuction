@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository("bidRepository")
 public interface BidRepository extends JpaRepository<Bid,Long> {
-
+//
 }
 
