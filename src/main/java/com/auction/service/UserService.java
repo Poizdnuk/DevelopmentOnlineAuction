@@ -7,9 +7,13 @@ import org.springframework.data.domain.Sort;
 import java.util.List;
 
 public interface UserService {
-    User getOne(Long id);
 
     List<User> findAll();
+
+    User findByUserLogin(String login);
+
+    User getOne(Long id);
+
 
     List<User> findAll(Sort var1);
 
@@ -17,5 +21,5 @@ public interface UserService {
 
     void save(User user);
 
-    User findByUserLogin(String login);
+
 }

@@ -13,8 +13,7 @@ import java.util.Optional;
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query("select u from User u where u.login=:login")
-    User findUserByLogin(@Param("login") String login);
+    User findByLogin(String login);
 
 //    @Query("select u from User u where u.user_first_name = :name or u.user_last_name = :name")
 //    List<User> findByFirstnameOrLastname(String name);

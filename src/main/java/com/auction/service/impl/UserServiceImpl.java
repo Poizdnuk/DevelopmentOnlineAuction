@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User findByUserLogin(String login) {
-        return userRepository.findUserByLogin(login);
+        return userRepository.findByLogin(login);
     }
 
     @Transactional(readOnly = true)

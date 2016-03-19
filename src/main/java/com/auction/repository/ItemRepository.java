@@ -6,10 +6,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository("itemRepository")
-public interface ItemRepository extends JpaRepository<Item,Long> {
+import java.util.List;
 
-    @Query("select u from Item u where u.name=:name")
-    Item findItemByName(@Param("name") String name);
+@Repository("itemRepository")
+public interface ItemRepository extends JpaRepository<Item, Long> {
+
+//    @Query("select u from Item u where u.name=:name")
+    Item findByName(String name);
+
+//    List<Item> findByName(String name);
+
+//    List<Item> findByNameAndDescription(String name, String description);
 }
 
